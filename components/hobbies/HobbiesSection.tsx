@@ -1,5 +1,7 @@
 "use client"
 
+import { db } from "@/firebase";
+import { collection, getDoc, getDocs } from "firebase/firestore/lite";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 
@@ -40,14 +42,16 @@ const HobbiesSection = () => {
 	const [currentFilterDetails, setCurrentFilterDetails] = useState<any>(null);
 
 	useEffect(() => {
-		console.log(currentFilterDetails)
 		if(!!currentSelectedHobby && currentFilter in currentSelectedHobby) {
 			setCurrentFilterDetails(currentSelectedHobby[currentFilter]);
 		}
 	}, [currentSelectedHobby, currentFilter, currentFilterDetails]);
 
-	const handleCurrentSelectedHobby = (item: any) => {
+	const handleCurrentSelectedHobby = async (item: any) => {
 		try {
+			let snapshot = await getDocs(collection(db, "anime"))
+			let animeList = snapshot.docs.map((doc) => doc.data())
+			console.log(animeList)
 			setCurrentSelectedHobby(hobbiesAndInterestsDetails[item]);
 			return true;
 		} catch (e) {

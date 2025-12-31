@@ -1,4 +1,5 @@
 import AboutSection from "@/components/about/AboutSection";
+import EssentialsSection from "@/components/essentials/EssentialsSection";
 import HeaderSection from "@/components/header/HeaderSection";
 import HobbiesSection from "@/components/hobbies/HobbiesSection";
 import HomeSection from "@/components/home/HomeSection";
@@ -22,7 +23,8 @@ export default function Home() {
 			{/* ABOUT */}
 			<AboutSection/>
 
-			{/* CONTACT */}
+			{/* ESSENTIALS */}
+			<EssentialsSection/>
 
 			{/* FOOTER */}
 
